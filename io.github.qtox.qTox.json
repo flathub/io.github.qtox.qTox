@@ -44,7 +44,8 @@
 					"type": "git",
 					"url": "https://github.com/sqlcipher/sqlcipher",
 					"tag": "v3.4.2",
-					"commit": "c6f709fca81c910ba133aaf6330c28e01ccfe5f8"
+					"commit": "c6f709fca81c910ba133aaf6330c28e01ccfe5f8",
+					"disable-fsckobjects" : true
 				},
 				{
 					"type": "script",
