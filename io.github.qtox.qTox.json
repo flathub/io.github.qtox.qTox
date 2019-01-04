@@ -11,6 +11,7 @@
         "--socket=wayland",
         "--socket=x11",
         "--share=ipc",
+        "--talk-name=org.kde.StatusNotifierWatcher",        
         "--filesystem=xdg-desktop",
         "--filesystem=xdg-documents",
         "--filesystem=xdg-download",
