@@ -2,7 +2,7 @@
     "app-id": "io.github.qtox.qTox",
     "runtime": "org.kde.Platform",
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.11",
+    "runtime-version": "5.12",
     "command": "qtox",
     "rename-icon": "qtox",
     "finish-args": [
@@ -11,7 +11,7 @@
         "--socket=wayland",
         "--socket=x11",
         "--share=ipc",
-        "--talk-name=org.kde.StatusNotifierWatcher",        
+        "--talk-name=org.kde.StatusNotifierWatcher",
         "--filesystem=xdg-desktop",
         "--filesystem=xdg-documents",
         "--filesystem=xdg-download",
@@ -22,7 +22,7 @@
         "--device=all"
     ],
     "build-options": {
-        "cflags": "-O3 -DSQLITE_HAS_CODEC",
+        "cflags": "-O3",
         "cxxflags": "-O3"
     },
     "cleanup": [
@@ -43,8 +43,8 @@
             [
                 {
                     "type": "archive",
-                    "url": "https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.14.2.tar.bz2",
-                    "sha256" : "e6b962c4b1253cf852c31da13fd6b5bb7cbe5aa9e182881aec55123bae680692"
+                    "url": "https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.16.3.tar.bz2",
+                    "sha256": "7c5c0d49c130cf65d384f28e9f3a53c5f7d17bf18740c48c40810e0fbbed5b54"
                 }
             ]
         },
@@ -80,32 +80,39 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-4.0.1.tar.bz2",
-                    "sha256" : "7ee591b1e7fb66f055fa514fbd5d98e092ddb3dbe37d2e50ea5c16ab51c21670"
+                    "url": "https://ffmpeg.org/releases/ffmpeg-4.1.1.tar.xz",
+                    "sha256": "373749824dfd334d84e55dff406729edfd1606575ee44dd485d97d45ea4d2d86"
+                }
+            ]
+        },
+        {
+            "name": "tcl",
+            "subdir": "unix",
+            "post-install": [
+                "chmod 755 /app/lib/libtcl8.6.so"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.9-src.tar.gz",
+                    "sha256": "ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e"
                 }
             ]
         },
         {
             "name": "sqlcipher",
-            "rm-configure": true,
+            "build-options": {
+                "cflags": "-DSQLITE_HAS_CODEC",
+                "ldflags": "-lcrypto -lpthread -ldl"
+            },
             "config-opts": [
-                "--enable-tempstore=yes",
-                "--disable-tcl"
+                "--enable-tempstore=yes"
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/sqlcipher/sqlcipher",
-                    "tag": "v3.4.2",
-                    "commit": "c6f709fca81c910ba133aaf6330c28e01ccfe5f8",
-                    "disable-fsckobjects" : true
-                },
-                {
-                    "type": "script",
-                    "dest-filename": "autogen.sh",
-                    "commands": [
-                        "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
-                    ]
+                    "type": "archive",
+                    "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.0.1.tar.gz",
+                    "sha256": "2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca"
                 }
             ]
         },
@@ -115,8 +122,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/jedisct1/libsodium",
-                    "tag": "1.0.16",
-                    "commit": "675149b9b8b66ff44152553fb3ebf9858128363d"
+                    "tag": "1.0.17",
+                    "commit": "b732443c442239c2e0184820e9b23cca0de0828c"
                 }
             ]
         },
@@ -138,8 +145,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.3",
-                    "commit": "ae7899cab8104fa3c3078a3e61ddfa58a826e39a"
+                    "tag": "v0.2.9",
+                    "commit": "98b754e1f22220f10196760389371dba6d139c6f"
                 }
             ]
         },
@@ -150,11 +157,9 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qTox/qTox",
-                    "tag": "v1.16.3",
-                    "commit": "8eed684c37bd711de2ca4bd863f5f0509edcdc2d"
+                    "branch": "master"
                 }
             ]
         }
     ]
 }
-
