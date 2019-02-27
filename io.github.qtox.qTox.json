@@ -22,8 +22,8 @@
         "--device=all"
     ],
     "build-options": {
-        "cflags": "-O3",
-        "cxxflags": "-O3"
+        "cflags": "-O3 -fPIC",
+        "cxxflags": "-O3 -fPIC"
     },
     "cleanup": [
         "/include",
@@ -33,14 +33,12 @@
     "modules": [
         {
             "name": "libv4l2",
-            "config-opts":
-            [
+            "config-opts": [
                 "--disable-libdvbv5",
                 "--disable-v4l-utils",
                 "--disable-qv4l2"
             ],
-            "sources":
-            [
+            "sources": [
                 {
                     "type": "archive",
                     "url": "https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.16.3.tar.bz2",
@@ -86,6 +84,61 @@
             ]
         },
         {
+        	"name": "opus",
+        	"config-opts": [
+        		"--disable-extra-programs",
+        		"--disable-doc"
+        	],
+        	"sources": [
+        		{
+        			"type": "archive",
+        			"url": "https://archive.mozilla.org/pub/opus/opus-1.3.tar.gz",
+        			"sha256": "4f3d69aefdf2dbaf9825408e452a8a414ffc60494c70633560700398820dc550"
+        		}
+        	]
+        },
+        {
+        	"name": "vpx",
+        	"config-opts": [
+        		"--enable-shared",
+        		"--disable-docs",
+        		"--disable-examples",
+        		"--disable-unit-tests"
+        	],
+        	"sources": [
+        		{
+        			"type": "archive",
+        			"url": "https://github.com/webmproject/libvpx/archive/v1.8.0.tar.gz",
+        			"sha256": "86df18c694e1c06cc8f83d2d816e9270747a0ce6abe316e93a4f4095689373f6"
+        		}
+        	]
+        },
+        {
+        	"name": "filter_audio",
+        	"buildsystem": "simple",
+        	"build-commands": [
+        		"make",
+        		"make install PREFIX=/app"
+        	],
+        	"sources": [
+        		{
+        			"type": "archive",
+        			"url": "https://github.com/irungentoo/filter_audio/archive/v0.0.1.tar.gz",
+        			"sha256": "fb135592c5133c3b4b664da18f988f58609db912f204059abe16277df044a366"
+        		}
+        	]
+        },
+        {
+        	"name": "libconfig",
+        	"sources": [
+        		{
+        			"type": "archive",
+        			"url": "https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz",
+        			"sha256": "7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9"
+        		}
+        	]
+        },
+        {
             "name": "tcl",
             "subdir": "unix",
             "post-install": [
@@ -113,6 +166,13 @@
                     "type": "archive",
                     "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.0.1.tar.gz",
                     "sha256": "2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
+                    ]
                 }
             ]
         },
@@ -120,10 +180,9 @@
             "name": "libsodium",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/jedisct1/libsodium",
-                    "tag": "1.0.17",
-                    "commit": "b732443c442239c2e0184820e9b23cca0de0828c"
+                    "type": "archive",
+                    "url": "https://github.com/jedisct1/libsodium/releases/download/1.0.17/libsodium-1.0.17.tar.gz",
+                    "sha256": "0cc3dae33e642cc187b5ceb467e0ad0e1b51dcba577de1190e9ffa17766ac2b1"
                 }
             ]
         },
@@ -131,22 +190,30 @@
             "name": "libqrencode",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/fukuchi/libqrencode",
-                    "tag": "v4.0.2",
-                    "commit": "59ee597f913fcfda7a010a6e106fbee2595f68e4"
+                    "type": "archive",
+                    "url": "https://github.com/fukuchi/libqrencode/archive/v4.0.2.tar.gz",
+                    "sha256": "43091fea4752101f0fe61a957310ead10a7cb4b81e170ce61e5baa73a6291ac2"
                 }
             ]
         },
         {
             "name": "c-toxcore",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+            	"-DCMAKE_BUILD_TYPE:STRING=Release",
+            	"-DCMAKE_INSTALL_PREFIX=/app",
+            	"-DCMAKE_INSTALL_LIBDIR=/app/lib",
+            	"-DCMAKE_INSTALL_INCLUDEDIR=/app/include",
+            	"-DUSE_IPV6=1",
+            	"-DMUST_BUILD_TOXAV=ON",
+            	"-DDHT_BOOTSTRAP=ON",
+            	"-DBOOTSTRAP_DAEMON=ON"
+            ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.9",
-                    "commit": "98b754e1f22220f10196760389371dba6d139c6f"
+                    "type": "archive",
+                    "url": "https://github.com/TokTok/c-toxcore/archive/v0.2.9.tar.gz",
+                    "sha256": "a8c962709447fb9b0cbb1a90ec1945a1b2d272b4d322356c48a4e3882b1267e7"
                 }
             ]
         },
