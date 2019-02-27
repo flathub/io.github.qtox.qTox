@@ -169,6 +169,18 @@
                     "sha256": "2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca"
                 },
                 {
+                	"type": "file",
+                	"url": "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess",
+                	"sha256": "0e255a69bcc3c5e5af1c94aeb34c3f508fd8db2ab0fbb9b8b65444518c7c820c",
+                	"dest-filename": "config.guess"
+                },
+                {
+                	"type": "file",
+                	"url": "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub",
+                	"sha256": "1611d0efbb1970d79fcf2f3dd3d25ab904fdc8d021cd9f50b125dadf88aaeeb4",
+                	"dest-filename": "config.sub"
+                },
+                {
                     "type": "script",
                     "dest-filename": "autogen.sh",
                     "commands": [
