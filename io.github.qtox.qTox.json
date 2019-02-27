@@ -154,6 +154,7 @@
         },
         {
             "name": "sqlcipher",
+            "rm-configure": true,
             "build-options": {
                 "cflags": "-DSQLITE_HAS_CODEC",
                 "ldflags": "-lcrypto -lpthread -ldl"
@@ -220,6 +221,10 @@
         {
             "name": "qTox",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+            	"-DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON",
+            	"-DCMAKE_CXX_FLAGS=-isystem\ /app/include/tox"
+            ],
             "sources": [
                 {
                     "type": "git",

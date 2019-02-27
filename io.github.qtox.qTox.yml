@@ -75,6 +75,7 @@ modules:
         url: https://prdownloads.sourceforge.net/tcl/tcl8.6.9-src.tar.gz
         sha256: ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e
   - name: sqlcipher
+    rm-configure: true
     build-options:
       cflags: "-DSQLITE_HAS_CODEC"
       ldflags: "-lcrypto -lpthread -ldl"
@@ -99,13 +100,14 @@ modules:
         sha256: 43091fea4752101f0fe61a957310ead10a7cb4b81e170ce61e5baa73a6291ac2
   - name: c-toxcore
     buildsystem: cmake-ninja
-    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DCMAKE_INSTALL_PREFIX=/app, -DUSE_IPV6=1, -DMUST_BUILD_TOXAV=ON, -DDHT_BOOTSTRAP=ON, -DBOOTSTRAP_DAEMON=ON]
+    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DCMAKE_INSTALL_PREFIX=/app, -DCMAKE_INSTALL_LIBDIR=/app/lib, -DCMAKE_INSTALL_INCLUDEDIR=/app/include, -DUSE_IPV6=1, -DMUST_BUILD_TOXAV=ON, -DDHT_BOOTSTRAP=ON, -DBOOTSTRAP_DAEMON=ON]
     sources:
       - type: archive
         url: https://github.com/TokTok/c-toxcore/archive/v0.2.9.tar.gz
         sha256: a8c962709447fb9b0cbb1a90ec1945a1b2d272b4d322356c48a4e3882b1267e7
   - name: qTox
     buildsystem: cmake-ninja
+    config-opts: [-DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON, -DCMAKE_CXX_FLAGS=-isystem\ /app/include/tox]
     sources:
       - type: git
         url: https://github.com/qTox/qTox
