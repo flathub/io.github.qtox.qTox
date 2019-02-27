@@ -99,7 +99,7 @@ modules:
         sha256: 43091fea4752101f0fe61a957310ead10a7cb4b81e170ce61e5baa73a6291ac2
   - name: c-toxcore
     buildsystem: cmake-ninja
-    config-opts: [-DCMAKE_BUILD_TYPE:STRING=Release, -DCMAKE_INSTALL_PREFIX=/app, -DUSE_IPV6=1, -DMUST_BUILD_TOXAV=ON, -DDHT_BOOTSTRAP=ON, -DBOOTSTRAP_DAEMON=ON]
+    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DCMAKE_INSTALL_PREFIX=/app, -DUSE_IPV6=1, -DMUST_BUILD_TOXAV=ON, -DDHT_BOOTSTRAP=ON, -DBOOTSTRAP_DAEMON=ON]
     sources:
       - type: archive
         url: https://github.com/TokTok/c-toxcore/archive/v0.2.9.tar.gz
