@@ -28,44 +28,69 @@ cleanup:
   - /lib/pkgconfig
   - /share/man
 modules:
+  - shared-modules/SDL/SDL-1.2.15.json
+    - name: sdl
+
+  - shared-modules/gtk2/gtk2.json
+    - name: gtk-2
+
+  - shared-modules/dbus-glib/dbus-glib-0.110.json
+    - name: dbusglib
+
+  - shared-modules/libappindicator/libappindicator-gtk2-12.10.json
+    - name: libappindicatorgtk2
+
+  - name: libconfig
+    sources:
+      - type: archive
+        url: https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz
+        sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
+
   - name: libv4l2
     config-opts: [--disable-libdvbv5, --disable-v4l-utils, --disable-qv4l2]
     sources:
       - type: archive
         url: https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.16.3.tar.bz2
         sha256: 7c5c0d49c130cf65d384f28e9f3a53c5f7d17bf18740c48c40810e0fbbed5b54
-  - name: ffmpeg
-    config-opts: [--disable-everything, --enable-gpl, --disable-debug, --enable-optimizations, --enable-shared, --disable-programs, --disable-protocols, --disable-doc, --disable-avfilter, --disable-avresample, --disable-filters, --disable-iconv, --disable-network, --disable-postproc, --enable-libv4l2, --enable-indev=v4l2, --enable-libxcb, --enable-indev=xcbgrab, --enable-demuxer=h264, --enable-demuxer=mjpeg, --enable-parser=h264, --enable-parser=mjpeg, --enable-decoder=h264, --enable-decoder=mjpeg, --enable-decoder=rawvideo]
-    sources:
-      - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.1.1.tar.xz
-        sha256: 373749824dfd334d84e55dff406729edfd1606575ee44dd485d97d45ea4d2d86
+
   - name: opus
     config-opts: [--disable-extra-programs, --disable-doc]
     sources:
       - type: archive
         url: https://archive.mozilla.org/pub/opus/opus-1.3.tar.gz
         sha256: 4f3d69aefdf2dbaf9825408e452a8a414ffc60494c70633560700398820dc550
+
   - name: vpx
     config-opts: [--enable-shared, --disable-docs, --disable-examples, --disable-unit-tests]
     sources:
       - type: archive
         url: https://github.com/webmproject/libvpx/archive/v1.8.0.tar.gz
         sha256: 86df18c694e1c06cc8f83d2d816e9270747a0ce6abe316e93a4f4095689373f6
+
+  - name: ffmpeg
+    config-opts: [--enable-gpl, --enable-version3, --disable-debug, --disable-logging, --enable-optimizations, --disable-static, --enable-shared, --enable-small, --disable-doc, --enable-postproc, --enable-libv4l2, --enable-indev=v4l2, --enable-libxcb, --enable-indev=xcbgrab, --enable-demuxer=h264, --enable-demuxer=mjpeg, --enable-parser=h264, --enable-parser=mjpeg, --enable-decoder=h264, --enable-decoder=mjpeg, --enable-decoder=rawvideo]
+    sources:
+      - type: archive
+        url: https://ffmpeg.org/releases/ffmpeg-4.1.1.tar.xz
+        sha256: 373749824dfd334d84e55dff406729edfd1606575ee44dd485d97d45ea4d2d86
+
   - name: filter_audio
     buildsystem: simple
     build-commands:
-      - make
       - make install PREFIX=/app
     sources:
       - type: archive
         url: https://github.com/irungentoo/filter_audio/archive/v0.0.1.tar.gz
         sha256: fb135592c5133c3b4b664da18f988f58609db912f204059abe16277df044a366
-  - name: libconfig
+
+  - name: openal
+    buildsystem: cmake
+    config-opts: [-DALSOFT_UTILS=OFF, -DALSOFT_NO_CONFIG_UTIL=ON, -DALSOFT_EXAMPLES=OFF, -DALSOFT_TESTS=OFF]
     sources:
       - type: archive
-        url: https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz
-        sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
+        url: https://www.openal-soft.org/openal-releases/openal-soft-1.19.1.tar.bz2
+        sha256: 5c2f87ff5188b95e0dc4769719a9d89ce435b8322b4478b95dd4b427fe84b2e9
+
   - name: tcl
     subdir: unix
     post-install:
@@ -74,49 +99,51 @@ modules:
       - type: archive
         url: https://prdownloads.sourceforge.net/tcl/tcl8.6.9-src.tar.gz
         sha256: ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e
+
   - name: sqlcipher
     rm-configure: true
     build-options:
       cflags: "-DSQLITE_HAS_CODEC"
-      ldflags: "-lcrypto -lpthread -ldl"
+      ldflags: "-lcrypto"
     config-opts: [--enable-tempstore=yes]
     sources:
       - type: archive
         url: https://github.com/sqlcipher/sqlcipher/archive/v4.0.1.tar.gz
         sha256: 2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca
       - type: file
-        url: https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess
-        sha256: 0e255a69bcc3c5e5af1c94aeb34c3f508fd8db2ab0fbb9b8b65444518c7c820c
+        url: https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=57c365fdb480c320e940adce97b49339ce3d6c45
+        sha256: 46147237cc74f09a9707c7b8c82d148af351339299cc3236893694ea365b1115
         dest-filename: config.guess
       - type: file
-        url: https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub
+        url: https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=57c365fdb480c320e940adce97b49339ce3d6c45
         sha256: 1611d0efbb1970d79fcf2f3dd3d25ab904fdc8d021cd9f50b125dadf88aaeeb4
         dest-filename: config.sub
       - type: script
         dest-filename: autogen.sh
         commands:
           - AUTOMAKE="automake --foreign" autoreconf -vfi
+
   - name: libsodium
     sources:
       - type: archive
         url: https://github.com/jedisct1/libsodium/releases/download/1.0.17/libsodium-1.0.17.tar.gz
         sha256: 0cc3dae33e642cc187b5ceb467e0ad0e1b51dcba577de1190e9ffa17766ac2b1
+
   - name: libqrencode
     sources:
       - type: archive
         url: https://github.com/fukuchi/libqrencode/archive/v4.0.2.tar.gz
         sha256: 43091fea4752101f0fe61a957310ead10a7cb4b81e170ce61e5baa73a6291ac2
+
   - name: c-toxcore
-    buildsystem: cmake-ninja
-    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DCMAKE_INSTALL_PREFIX=/app, -DCMAKE_INSTALL_LIBDIR=/app/lib, -DCMAKE_INSTALL_INCLUDEDIR=/app/include, -DUSE_IPV6=1, -DMUST_BUILD_TOXAV=ON, -DDHT_BOOTSTRAP=ON, -DBOOTSTRAP_DAEMON=ON]
     sources:
       - type: archive
         url: https://github.com/TokTok/c-toxcore/archive/v0.2.9.tar.gz
         sha256: a8c962709447fb9b0cbb1a90ec1945a1b2d272b4d322356c48a4e3882b1267e7
+
   - name: qTox
     buildsystem: cmake-ninja
-    config-opts: [-DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON, -DCMAKE_CXX_FLAGS=-isystem\ /app/include/tox]
     sources:
       - type: git
         url: https://github.com/qTox/qTox
-        branch: master
+        commit: d6d433c617622521016b8d6173f71ef817eb3d84
