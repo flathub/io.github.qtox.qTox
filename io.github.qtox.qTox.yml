@@ -29,16 +29,12 @@ cleanup:
   - /share/man
 modules:
   - shared-modules/SDL/SDL-1.2.15.json
-    - name: sdl
 
   - shared-modules/gtk2/gtk2.json
-    - name: gtk-2
 
   - shared-modules/dbus-glib/dbus-glib-0.110.json
-    - name: dbusglib
 
   - shared-modules/libappindicator/libappindicator-gtk2-12.10.json
-    - name: libappindicatorgtk2
 
   - name: libconfig
     sources:
