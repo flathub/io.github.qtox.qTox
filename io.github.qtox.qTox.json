@@ -132,6 +132,10 @@
                     "url": "https://github.com/qTox/qTox",
                     "tag": "v1.16.3",
                     "commit": "8eed684c37bd711de2ca4bd863f5f0509edcdc2d"
+                },
+                {
+                    "type": "patch",
+                    "path": "appdata.patch"
                 }
             ]
         }
