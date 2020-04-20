@@ -2,7 +2,7 @@
     "app-id": "io.github.qtox.qTox",
     "runtime": "org.kde.Platform",
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.12",
+    "runtime-version": "5.14",
     "command": "qtox",
     "rename-icon": "qtox",
     "finish-args": [
@@ -24,10 +24,13 @@
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
             "directory": "lib/ffmpeg",
-            "version": "18.08",
+            "version": "19.08",
             "add-ld-path": "."
         }
     },
+    "cleanup-commands": [
+        "mkdir -p /app/lib/ffmpeg"
+    ],
     "cleanup": [
         "/include",
         "/lib/pkgconfig",
@@ -42,11 +45,7 @@
             "build-options": {
                 "no-debuginfo": true
             },
-            "cleanup": [
-                "/bin",
-                "/lib",
-                "/man"
-            ],
+            "cleanup": [ '*' ],
             "sources": [
                 {
                     "type": "archive",
@@ -90,23 +89,6 @@
             ]
         },
         {
-            /* Reminder: this is included in KDE 5.13 */
-            "name": "libqrencode",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DWITH_TOOLS=NO",
-                "-DBUILD_SHARED_LIBS=ON"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/fukuchi/libqrencode",
-                    "tag": "v4.0.2",
-                    "commit": "59ee597f913fcfda7a010a6e106fbee2595f68e4"
-                }
-            ]
-        },
-        {
             "name": "c-toxcore",
             "buildsystem": "cmake-ninja",
             "config-opts": [
@@ -118,8 +100,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.10",
-                    "commit": "7aab0d995240c59937d1aa23b7201389341a2be9"
+                    "tag": "v0.2.11",
+                    "commit": "30b9369b01859e7c57687129ba2a481aa2bc48b8"
                 }
             ]
         },
@@ -130,12 +112,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qTox/qTox",
-                    "tag": "v1.16.3",
-                    "commit": "8eed684c37bd711de2ca4bd863f5f0509edcdc2d"
-                },
-                {
-                    "type": "patch",
-                    "path": "appdata.patch"
+                    "tag": "v1.17.2",
+                    "commit": "465d82606813439ee14425f7462903bb39f2da30"
                 }
             ]
         }
