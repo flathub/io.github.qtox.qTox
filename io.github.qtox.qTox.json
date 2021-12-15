@@ -100,8 +100,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.12",
-                    "commit": "9be4dbb4335bf7d893c8d00566d3276ab6dedd14"
+                    "tag": "v0.2.13",
+                    "commit": "4348b96a5b482134a9cd55cb0ef9616798b4eb3c"
                 }
             ]
         },
@@ -116,8 +116,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qTox/qTox",
-                    "tag": "v1.17.3",
-                    "commit": "c0e9a3b79609681e5b9f6bbf8f9a36cb1993dc5f"
+                    "tag": "v1.17.4",
+                    "commit": "f0e82c3d90322aaf84b0eb34f56099e8ccca58f7"
                 }
             ]
         }
