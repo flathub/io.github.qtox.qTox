@@ -116,8 +116,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qTox/qTox",
-                    "tag": "v1.17.4",
-                    "commit": "f0e82c3d90322aaf84b0eb34f56099e8ccca58f7"
+                    "tag": "v1.17.6",
+                    "commit": "54345d1085628950af4176e6b4873513db0de4f3"
                 }
             ]
         }
