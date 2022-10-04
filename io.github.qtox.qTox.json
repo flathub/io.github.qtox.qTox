@@ -9,7 +9,7 @@
         "--share=network",
         "--socket=pulseaudio",
         "--socket=wayland",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--share=ipc",
         "--talk-name=org.kde.StatusNotifierWatcher",
         "--filesystem=xdg-desktop",
@@ -100,8 +100,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.13",
-                    "commit": "4348b96a5b482134a9cd55cb0ef9616798b4eb3c"
+                    "tag": "v0.2.18",
+                    "commit": "3a5da3588f693ba17768a9a4cbd67d54d53114ac"
                 }
             ]
         },
