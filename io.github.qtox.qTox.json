@@ -101,7 +101,11 @@
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
                     "tag": "v0.2.18",
-                    "commit": "3a5da3588f693ba17768a9a4cbd67d54d53114ac"
+                    "commit": "3a5da3588f693ba17768a9a4cbd67d54d53114ac",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
                 }
             ]
         },
@@ -117,7 +121,11 @@
                     "type": "git",
                     "url": "https://github.com/qTox/qTox",
                     "tag": "v1.17.6",
-                    "commit": "54345d1085628950af4176e6b4873513db0de4f3"
+                    "commit": "54345d1085628950af4176e6b4873513db0de4f3",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
                 }
             ]
         }
