@@ -45,7 +45,9 @@
             "build-options": {
                 "no-debuginfo": true
             },
-            "cleanup": [ '*' ],
+            "cleanup": [
+                "*"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -73,7 +75,7 @@
                     "url": "https://github.com/sqlcipher/sqlcipher",
                     "tag": "v4.4.0",
                     "commit": "4a81bea61e1da6fec222d713852830f1fd01aed2",
-                    "disable-fsckobjects" : true
+                    "disable-fsckobjects": true
                 }
             ]
         },
@@ -100,8 +102,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.18",
-                    "commit": "3a5da3588f693ba17768a9a4cbd67d54d53114ac",
+                    "tag": "v0.2.20",
+                    "commit": "934a8301113e6c6cb2bf1fb6791135cade908c72",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
