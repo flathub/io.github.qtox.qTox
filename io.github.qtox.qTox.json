@@ -2,7 +2,7 @@
     "app-id": "io.github.qtox.qTox",
     "runtime": "org.kde.Platform",
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.15-21.08",
+    "runtime-version": "5.15-24.08",
     "command": "qtox",
     "rename-icon": "qtox",
     "finish-args": [
@@ -24,7 +24,7 @@
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
             "directory": "lib/ffmpeg",
-            "version": "21.08",
+            "version": "22.08",
             "add-ld-path": "."
         }
     },
@@ -45,7 +45,7 @@
             "build-options": {
                 "no-debuginfo": true
             },
-            "cleanup": [ '*' ],
+            "cleanup": [ "*" ],
             "sources": [
                 {
                     "type": "archive",
