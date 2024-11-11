@@ -2,7 +2,7 @@
     "app-id": "io.github.qtox.qTox",
     "runtime": "org.kde.Platform",
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.15-21.08",
+    "runtime-version": "5.15-24.08",
     "command": "qtox",
     "rename-icon": "qtox",
     "finish-args": [
@@ -24,7 +24,7 @@
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
             "directory": "lib/ffmpeg",
-            "version": "21.08",
+            "version": "24.08",
             "add-ld-path": "."
         }
     },
@@ -45,7 +45,7 @@
             "build-options": {
                 "no-debuginfo": true
             },
-            "cleanup": [ '*' ],
+            "cleanup": [ "*" ],
             "sources": [
                 {
                     "type": "archive",
@@ -83,8 +83,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/jedisct1/libsodium",
-                    "tag": "1.0.18",
-                    "commit": "4f5e89fa84ce1d178a6765b8b46f2b6f91216677"
+                    "tag": "1.0.20-RELEASE",
+                    "commit": "9511c982fb1d046470a8b42aa36556cdb7da15de"
                 }
             ]
         },
@@ -100,12 +100,34 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.18",
-                    "commit": "3a5da3588f693ba17768a9a4cbd67d54d53114ac",
+                    "tag": "v0.2.20",
+                    "commit": "934a8301113e6c6cb2bf1fb6791135cade908c72",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
                     }
+                }
+            ]
+        },
+        {
+            "name": "toxext",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/toxext/toxext",
+                    "commit": "a746a99f4649c2ebdc8307bfcaa38042326f4f65"
+                }
+            ]
+        },
+        {
+            "name": "tox_extension_messages",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/toxext/tox_extension_messages",
+                    "commit": "3def0e36f63a3537b8fda87e12f870665d90dfcc"
                 }
             ]
         },
@@ -119,13 +141,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/qTox/qTox",
-                    "tag": "v1.17.6",
-                    "commit": "54345d1085628950af4176e6b4873513db0de4f3",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
-                    }
+                    "url": "https://github.com/TokTok/qTox",
+                    "commit": "ea76141928f955cbafe14babc33e0e3540b4f763"
                 }
             ]
         }
