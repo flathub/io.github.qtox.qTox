@@ -2,7 +2,7 @@
     "app-id": "io.github.qtox.qTox",
     "runtime": "org.kde.Platform",
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.15-24.08",
+    "runtime-version": "6.8",
     "command": "qtox",
     "rename-icon": "qtox",
     "finish-args": [
@@ -110,28 +110,6 @@
             ]
         },
         {
-            "name": "toxext",
-            "buildsystem": "cmake-ninja",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/toxext/toxext",
-                    "commit": "a746a99f4649c2ebdc8307bfcaa38042326f4f65"
-                }
-            ]
-        },
-        {
-            "name": "tox_extension_messages",
-            "buildsystem": "cmake-ninja",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/toxext/tox_extension_messages",
-                    "commit": "3def0e36f63a3537b8fda87e12f870665d90dfcc"
-                }
-            ]
-        },
-        {
             "name": "qTox",
             "buildsystem": "cmake-ninja",
             "config-opts": [
@@ -142,7 +120,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TokTok/qTox",
-                    "commit": "ea76141928f955cbafe14babc33e0e3540b4f763"
+                    "tag": "v1.18.0",
+                    "commit": "21c1fbc445b4df7b65d3298210599deb33a0a7f8",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
                 }
             ]
         }
