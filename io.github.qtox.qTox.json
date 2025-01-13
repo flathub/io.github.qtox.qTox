@@ -122,8 +122,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TokTok/qTox",
-                    "tag": "v1.18.1",
-                    "commit": "307d086ba45ebd3702c4a22cf1f899d4350efdfa",
+                    "tag": "v1.18.2",
+                    "commit": "ac1a16ec0bb7ef1f9bbd494a076e661b05937d08",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
