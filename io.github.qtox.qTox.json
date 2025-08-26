@@ -11,6 +11,7 @@
         "--socket=wayland",
         "--socket=fallback-x11",
         "--share=ipc",
+        "--talk-name=org.ayatana.indicator.application",
         "--talk-name=org.kde.StatusNotifierWatcher",
         "--filesystem=xdg-desktop",
         "--filesystem=xdg-documents",
