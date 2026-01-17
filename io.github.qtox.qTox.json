@@ -52,6 +52,7 @@
                 "/bin"
             ],
             "config-opts": [
+                "--with-tempstore=yes",
                 "--disable-tcl"
             ],
             "build-options": {
