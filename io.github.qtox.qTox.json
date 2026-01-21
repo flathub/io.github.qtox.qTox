@@ -21,6 +21,11 @@
         "--filesystem=/media",
         "--device=all"
     ],
+    "cleanup": [
+        "/include",
+        "*.la",
+        "*.a"
+    ],
     "modules": [
         {
             "name": "tcl",
@@ -56,8 +61,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/sqlcipher/sqlcipher",
-                    "tag": "v4.4.0",
-                    "commit": "4a81bea61e1da6fec222d713852830f1fd01aed2",
+                    "tag": "v4.4.3",
+                    "commit": "0663d8500204e14bd2bb0ca25162d91e4555528d",
                     "disable-fsckobjects": true
                 }
             ]
@@ -85,8 +90,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.20",
-                    "commit": "934a8301113e6c6cb2bf1fb6791135cade908c72",
+                    "tag": "v0.2.21",
+                    "commit": "3e6b22f5deb73c00cba881af3aefb2e253a1cde9",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
@@ -97,6 +102,9 @@
         {
             "name": "qTox",
             "buildsystem": "cmake-ninja",
+            "build-options": {
+                "cxxflags": "-Wno-error=unused-result -Wno-error=deprecated-declarations"
+            },
             "config-opts": [
                 "-DSVGZ_ICON=OFF",
                 "-DSTRICT_OPTIONS=ON"
@@ -105,8 +113,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/TokTok/qTox",
-                    "tag": "v1.18.2",
-                    "commit": "ac1a16ec0bb7ef1f9bbd494a076e661b05937d08",
+                    "tag": "v1.18.3",
+                    "commit": "b7802b42dcf5f68474eb4d6db66c004e3ca50848",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
