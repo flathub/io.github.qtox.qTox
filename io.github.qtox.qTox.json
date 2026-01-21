@@ -57,6 +57,10 @@
                 "cflags": "-DSQLITE_HAS_CODEC",
                 "ldflags": "-lcrypto"
             },
+            /* Fix eu-strip failed with Permission denied */
+            "post-install": [
+                "chmod -Rf u+w ${FLATPAK_DEST}/lib"
+            ],
             "sources": [
                 {
                     "type": "git",
