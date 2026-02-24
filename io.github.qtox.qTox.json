@@ -58,7 +58,6 @@
                 "cflags": "-DSQLITE_HAS_CODEC",
                 "ldflags": "-lcrypto"
             },
-            /* Fix eu-strip failed with Permission denied */
             "post-install": [
                 "chmod -Rf u+w ${FLATPAK_DEST}/lib"
             ],
@@ -95,8 +94,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.21",
-                    "commit": "3e6b22f5deb73c00cba881af3aefb2e253a1cde9",
+                    "tag": "v0.2.22",
+                    "commit": "da26052603369045dceb5dfc8c89919b222d0ce0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
