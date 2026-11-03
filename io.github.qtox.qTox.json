@@ -94,8 +94,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/toktok/c-toxcore",
-                    "tag": "v0.2.23",
-                    "commit": "d9ca3c577e5abd4303d180eb5270167b4133ea4c",
+                    "tag": "v0.2.24",
+                    "commit": "2f3a37a3b59a0e2456486f1ef7bdbc192bbf8205",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
